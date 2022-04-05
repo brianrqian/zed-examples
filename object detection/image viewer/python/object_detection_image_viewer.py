@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     # Create a InitParameters object and set configuration parameters
     init_params = sl.InitParameters()
-    init_params.camera_resolution = sl.RESOLUTION.HD1080  # Use HD1080 video mode    
+    init_params.camera_resolution = sl.RESOLUTION.HD1080  # Use HD1080 video mode
     init_params.coordinate_units = sl.UNIT.METER
     init_params.camera_fps = 30                          # Set fps at 30
     init_params.coordinate_system = sl.COORDINATE_SYSTEM.RIGHT_HANDED_Y_UP
@@ -54,12 +54,13 @@ if __name__ == "__main__":
 
     # Enable object detection module
     obj_param = sl.ObjectDetectionParameters()
+    #obj_param.detection_model = sl.DETECTION_MODEL.CUSTOM_BOX_OBJECTS
     # Defines if the object detection will track objects across images flow.
     obj_param.enable_tracking = True       # if True, enable positional tracking
 
     if obj_param.enable_tracking:
         zed.enable_positional_tracking()
-        
+
     zed.enable_object_detection(obj_param)
 
     camera_info = zed.get_camera_information()
